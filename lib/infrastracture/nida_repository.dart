@@ -4,6 +4,8 @@ import 'package:nida/infrastracture/nida_data_source.dart';
 
 abstract class INidaRepository{
   Future<Either<String, Nida>> getNidaInfo({int Nin});
+
+
 }
 
 
