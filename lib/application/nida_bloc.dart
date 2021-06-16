@@ -20,10 +20,12 @@ class NidaBloc extends Bloc<NidaEvent, NidaState> {
   @override
   Stream<NidaState> mapEventToState(NidaEvent event) async* {
     yield* event.map(
-        numberChanged: (e){
+        numberChanged: (e) async* {
 
         },
-        submit: (e){
+        submit: (e) async* {
+          yield NidaState.loading();
+          final resp = await _nidaRepository.getNidaInfo(nin: 123456);
 
         });
   }
