@@ -1,4 +1,9 @@
-part of 'nida_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-@immutable
-abstract class NidaEvent {}
+part 'nida_event.freezed.dart';
+
+@freezed
+abstract class NidaEvent with _$NidaEvent {
+  const factory NidaEvent.numberChanged(String nidaNumber) = _NumberChanged;
+  const factory NidaEvent.submit() = _Submit;
+}
