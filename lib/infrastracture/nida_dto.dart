@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nida/domain/nida.dart';
 
 part 'nida_dto.freezed.dart';
 
@@ -14,5 +15,27 @@ abstract class NidaDto with _$NidaDto {
     String? DateofBirth
   }) = _NidaDto;
 
+  factory NidaDto.fromDomain(Nida nida){
+    return NidaDto(
+      FirstName: nida.FirstName,
+      MiddleName: nida.MiddleName,
+      LastName: nida.LastName,
+      Sex: nida.Sex,
+      DateofBirth: nida.DateofBirth
+    );
+  }
+
   factory NidaDto.fromJson(Map<String, dynamic> json) => _$NidaDtoFromJson(json);
+}
+
+extension NidaDtoX on NidaDto{
+  Nida toDomain(){
+    return Nida(
+      FirstName: FirstName,
+      MiddleName: MiddleName,
+      LastName: LastName,
+      Sex: Sex,
+      DateofBirth: DateofBirth
+    );
+  }
 }

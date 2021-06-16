@@ -14,8 +14,6 @@ abstract class Nida with _$Nida {
     String? DateofBirth
   }) = _Nida;
 
-
-
   factory Nida.fromJson(Map<String, dynamic> json) =>
       _$NidaFromJson(json);
 }
