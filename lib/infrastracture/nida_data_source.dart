@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 
 abstract class INidaDataSource {
@@ -12,7 +10,7 @@ class NidaDataSource implements INidaDataSource{
   var dio = Dio();
 
   @override
-  Future<String> getPersonalData({int nidaNumber}) async {
+  Future<String> getPersonalData({int? nidaNumber}) async {
     Options options = Options(
       headers: {
         'Content-Type': 'application/json'
@@ -24,6 +22,8 @@ class NidaDataSource implements INidaDataSource{
     }catch(e){
 
     }
+
+    return "";
   }
 
 }
