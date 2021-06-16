@@ -3,7 +3,7 @@ import 'package:nida/domain/nida.dart';
 import 'package:nida/infrastracture/nida_data_source.dart';
 
 abstract class INidaRepository{
-  Future<Either<String, Nida>> getNidaInfo({int Nin});
+  Future<Either<String, Nida>> getNidaInfo({int nin});
 }
 
 
@@ -13,10 +13,13 @@ class NidaRepository implements INidaRepository{
   NidaRepository(this._nidaDataSource);
 
   @override
-  Future<Either<String, Nida>> getNidaInfo({required int Nin})  async{
+  Future<Either<String, Nida>> getNidaInfo({int? nin})  async{
     try{
-      final resp = _nidaDataSource.getPersonalData(nidaNumber: Nin);
-    }catch (e){}
+      final response = await _nidaDataSource.getPersonalData(nidaNumber: nin);
+      return Right(response);
+    }catch (e){
+      return Left('');
+    }
 
   }
 
